@@ -8,12 +8,14 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class ScoreKeeperActivity extends Activity {
 	ArrayList<TextView> player_scores;
 	ArrayList<Button> player_buttons;
-	
+    EditText user_input;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,7 +23,7 @@ public class ScoreKeeperActivity extends Activity {
 		
 		player_scores = new ArrayList<TextView>();
 		player_buttons = new ArrayList<Button>();
-		
+
 		player_scores.add((TextView) findViewById(R.id.player1_score));
 		player_scores.add((TextView) findViewById(R.id.player2_score));
 		player_scores.add((TextView) findViewById(R.id.player3_score));
@@ -29,7 +31,9 @@ public class ScoreKeeperActivity extends Activity {
 		player_buttons.add((Button) findViewById(R.id.player1_btn));
 		player_buttons.add((Button) findViewById(R.id.player2_btn));
 		player_buttons.add((Button) findViewById(R.id.player3_btn));
-		
+
+        user_input = (EditText) findViewById(R.id.input);
+
 		resetScores();
 		setupButtons();
 	}
@@ -51,16 +55,18 @@ public class ScoreKeeperActivity extends Activity {
 	
 	protected class ScoreButtonListener implements OnClickListener{
 		TextView scoreView;
-		
+
 		public ScoreButtonListener(TextView scoreView){
 			this.scoreView = scoreView;
 		}
 		@Override
 		public void onClick(View v) {
+            if(user_input.getText().toString().isEmpty()){
+                return;
+            }
 			int currentScore = Integer.parseInt((String) scoreView.getText());
-			int newScore = currentScore + 1; //user input
+			int newScore = currentScore + Integer.parseInt(user_input.getText().toString()); //user input
 			scoreView.setText(Integer.toString(newScore));
 		}
-		
 	}
 }

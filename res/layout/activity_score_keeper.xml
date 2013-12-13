@@ -29,8 +29,9 @@
             android:layout_height="wrap_content"
             android:text="player owww"
             android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />                
+            android:textColor="@android:color/holo_orange_dark" />
     </LinearLayout>
+
 
     <LinearLayout 
         android:layout_width="match_parent"
@@ -62,12 +63,12 @@
             android:textSize="20sp"
             android:textColor="@android:color/black" />                
     </LinearLayout>    
-    <LinearLayout 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
-        
-        <Button 
+
+        <Button
             android:id="@+id/player1_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -75,7 +76,7 @@
             android:text="player meow"
             android:textSize="20sp"
             android:textColor="@android:color/holo_orange_dark" />
-        <Button 
+        <Button
             android:id="@+id/player2_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -83,14 +84,20 @@
             android:text="player meee"
             android:textSize="20sp"
             android:textColor="@android:color/holo_orange_dark" />
-        <Button 
+        <Button
             android:id="@+id/player3_btn"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="player owww"
             android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />                
-    </LinearLayout>    
-    
+            android:textColor="@android:color/holo_orange_dark" />
+    </LinearLayout>
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="ilovepeter"
+        android:inputType="number"
+        android:imeOptions="actionSend" />
 </LinearLayout>
