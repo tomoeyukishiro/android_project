@@ -1,103 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
     android:orientation="vertical" >
-    
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        
-        <TextView 
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player meow"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-        <TextView 
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player meee"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-        <TextView 
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player owww"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-    </LinearLayout>
-
-
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-        
-        <TextView 
-            android:id="@+id/player1_score"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="score meow"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />
-        <TextView 
-            android:id="@+id/player2_score"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="score meee"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />
-        <TextView 
-            android:id="@+id/player3_score"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="score owww"
-            android:textSize="20sp"
-            android:textColor="@android:color/black" />                
-    </LinearLayout>    
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/player1_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player meow"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-        <Button
-            android:id="@+id/player2_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player meee"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-        <Button
-            android:id="@+id/player3_btn"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="player owww"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_orange_dark" />
-    </LinearLayout>
-    <EditText
-        android:id="@+id/input"
+        android:id="@+id/player_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="ilovepeter"
-        android:inputType="number"
-        android:imeOptions="actionSend" />
+        android:orientation="horizontal">
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <EditText
+    android:id="@+id/input"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="ilovepeter"
+    android:inputType="number"
+    android:imeOptions="actionSend" />
+    <Button
+        android:id="@+id/add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter"
+        />
+    </LinearLayout>
 </LinearLayout>

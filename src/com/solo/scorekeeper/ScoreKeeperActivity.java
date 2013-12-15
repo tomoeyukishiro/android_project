@@ -7,14 +7,19 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.LinearLayout;
 
 public class ScoreKeeperActivity extends Activity {
 	ArrayList<TextView> player_scores;
 	ArrayList<Button> player_buttons;
-    EditText user_input;
+    EditText input_score;
+    Button add_players;
+    LinearLayout player_layout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,35 +29,56 @@ public class ScoreKeeperActivity extends Activity {
 		player_scores = new ArrayList<TextView>();
 		player_buttons = new ArrayList<Button>();
 
-		player_scores.add((TextView) findViewById(R.id.player1_score));
-		player_scores.add((TextView) findViewById(R.id.player2_score));
-		player_scores.add((TextView) findViewById(R.id.player3_score));
-		
-		player_buttons.add((Button) findViewById(R.id.player1_btn));
-		player_buttons.add((Button) findViewById(R.id.player2_btn));
-		player_buttons.add((Button) findViewById(R.id.player3_btn));
-
-        user_input = (EditText) findViewById(R.id.input);
-
-		resetScores();
-		setupButtons();
+        input_score = (EditText) findViewById(R.id.input);
+        add_players = (Button) findViewById(R.id.add_btn);
+        add_players.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewPlayer("allie");
+            }
+        });
+        player_layout = (LinearLayout) findViewById(R.id.player_layout);
 	}
-	
+
+    private void addNewPlayer(String playerName){
+        LinearLayout player_column = new LinearLayout(this);
+        player_column.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        player_column.setOrientation(LinearLayout.VERTICAL);
+
+        TextView player_label = new TextView(this);
+        player_label.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        player_label.setText(playerName);
+        player_label.setTextSize(20);
+        player_label.setTextColor(getResources().getColor(android.R.color.black));
+
+        TextView player_score = new TextView(this);
+        player_score.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        player_score.setText("0");
+        player_score.setTextSize(20);
+        player_score.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+        player_scores.add(player_score);
+
+        Button player_btn = new Button(this);
+        player_btn.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        player_btn.setText(playerName);
+        player_btn.setTextSize(20);
+        player_btn.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+        player_buttons.add(player_btn);
+
+        player_btn.setOnClickListener(new ScoreButtonListener(player_score));
+
+        player_column.addView(player_label);
+        player_column.addView(player_score);
+        player_column.addView(player_btn);
+
+        player_layout.addView(player_column);
+    }
 	private void resetScores(){
 		for(TextView score : player_scores){
 			score.setText("0");
 		}
 	}
 
-	private void setupButtons(){
-		int counter = 0;
-		for(Button button: player_buttons){
-			TextView currentScore = player_scores.get(counter);
-			button.setOnClickListener(new ScoreButtonListener(currentScore));
-			counter +=1 ;
-		}
-	}
-	
 	protected class ScoreButtonListener implements OnClickListener{
 		TextView scoreView;
 
@@ -61,11 +87,11 @@ public class ScoreKeeperActivity extends Activity {
 		}
 		@Override
 		public void onClick(View v) {
-            if(user_input.getText().toString().isEmpty()){
+            if(input_score.getText().toString().isEmpty()){
                 return;
             }
 			int currentScore = Integer.parseInt((String) scoreView.getText());
-			int newScore = currentScore + Integer.parseInt(user_input.getText().toString()); //user input
+			int newScore = currentScore + Integer.parseInt(input_score.getText().toString()); //user input
 			scoreView.setText(Integer.toString(newScore));
 		}
 	}
